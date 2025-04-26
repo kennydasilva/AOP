@@ -4,20 +4,16 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+import jakarta.persistence.MappedSuperclass;
+
+
+@MappedSuperclass
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Usuario {
-	
-	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	private Long id;
-	
-	private String nome;
-	private String email;
-	private String senha;
-	
+public abstract class Usuario extends BaseEntity {
 
+    private String nome;
+    private String email;
+    private String senha;
 }

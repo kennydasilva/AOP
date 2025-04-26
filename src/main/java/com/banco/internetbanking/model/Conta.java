@@ -9,11 +9,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Conta {
+public abstract class Conta extends BaseEntity {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	
 	
 	@ManyToOne
 	@JoinColumn(name ="client_id")
@@ -24,5 +22,8 @@ public abstract class Conta {
 	
 	@OneToMany(mappedBy = "contaDestino")
 	private List<Transacao> transacoesDestino;
+	
+	private double saldo;
+	private String numeroConta;
 
 }

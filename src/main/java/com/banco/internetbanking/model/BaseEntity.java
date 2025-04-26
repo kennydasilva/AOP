@@ -2,16 +2,14 @@ package com.banco.internetbanking.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Aspect extends BaseEntity{
+public abstract class BaseEntity {
 
-    
-
-    private String tipoAspecto;
-    private LocalDateTime dataHora;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }
