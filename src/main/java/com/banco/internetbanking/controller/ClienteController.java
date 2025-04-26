@@ -38,7 +38,7 @@ public class ClienteController {
         	
             model.addAttribute("mensagem", "Cadastro realizado com sucesso!");
             
-            return "redirect:/conta";
+            return "redirect:/Addconta?email=" + cliente.getEmail();
             
         } catch (Exception e) {
         	
@@ -62,7 +62,7 @@ public class ClienteController {
             
             model.addAttribute("mensagem", "Login realizado com sucesso!");
             
-            return "redirect:/Dashboard";
+            return "redirect:/Dashboard?email=" + email;
         } catch (Exception e) {
         	
             model.addAttribute("erro", e.getMessage());
@@ -71,8 +71,8 @@ public class ClienteController {
     }
     
     @GetMapping("/Dashboard")
-    public String mostrardashbord(Model model) {
-        model.addAttribute("cliente", new Cliente());
+    public String mostrarDashboard(@RequestParam("email") String email, Model model) {
+        model.addAttribute("email", email);
         return "Dashboard";
     }
 

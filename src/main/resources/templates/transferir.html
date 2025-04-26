@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depósito</title>
+    <!-- Link para o Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 8px;
+        }
+        .btn-custom {
+            background-color: rgb(28, 113, 216);
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: rgb(53, 132, 228);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Internet Banking</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sair">Sair</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="card shadow-lg p-4">
+        <h3 class="text-center">Realizar Transferencia</h3>
+        
+        
+        <div class="alert alert-success" id="alert-success" style="display: none;">
+            <strong>Sucesso!</strong> Transferencia realizada com sucesso.
+        </div>
+        <div class="alert alert-danger" id="alert-danger" style="display: none;">
+            <strong>Erro!</strong> {{ erro }}		
+        </div>
+
+      
+        <form action="/transferir" method="post">
+            <div class="form-group">
+                <label for="contaId">Numero Da Conta Origem</label>
+                <input type="number" class="form-control" id="numeroOrigem" name="numeroOrigem" required>
+            </div>
+			
+			
+			<div class="form-group">
+			                <label for="contaId">Numero Da do Destinatario</label>
+			                <input type="number" class="form-control" id="numeroDestino" name="numeroDestino" required>
+			 </div>
+						
+
+			<input type="hidden" name="email" value="${email}">
+			
+            <div class="form-group">
+                <label for="valor">Valor da Transferencia</label>
+                <input type="number" class="form-control" id="valor" name="valor" step="0.01" required>
+            </div>
+            <button type="submit" class="btn btn-custom btn-block">Transferir</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

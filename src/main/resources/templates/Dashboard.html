@@ -1,13 +1,70 @@
-<form th:action="@{/Login}" method="post" class="row g-3">
-    <div class="col-md-6">
-        <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" required>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .card {
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .card-icon {
+            font-size: 50px;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Painel de Controlo</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <!-- Depositar -->
+		<a th:href="@{/deposito(email=${email})}">
+				    <div class="card text-center p-4">
+				         <i class="bi bi-wallet2 card-icon"></i>
+				        <h5 class="mt-3">Depositar</h5>
+				    </div>
+		</a>
+        <!-- Levantar -->
+		<a th:href="@{/levantar(email=${email})}">
+						    <div class="card text-center p-4">
+						         <i class="bi bi-cash-stack card-icon"></i>
+						        <h5 class="mt-3">Levantar</h5>
+						    </div>
+		</a>
+
+        <!-- Transferir -->
+		<a th:href="@{/transferir(email=${email})}">
+								    <div class="card text-center p-4">
+								        <i class="bi bi-arrow-left-right card-icon"></i>
+								        <h5 class="mt-3">Transferir</h5>
+								    </div>
+		</a>
+
+        <!-- Consultar Saldo -->
+        <div class="col">
+            <div class="card text-center p-4" th:onclick="'window.location.href=\'/saldo\''">
+                <i class="bi bi-coin card-icon"></i>
+                <h5 class="mt-3">Consultar Saldo</h5>
+            </div>
+        </div>
+
+		<a th:href="@{/Addconta(email=${email})}">
+		    <div class="card text-center p-4">
+		        <i class="bi bi-plus-circle card-icon"></i>
+		        <h5 class="mt-3">Criar Nova Conta</h5>
+		    </div>
+		</a>
+
     </div>
-    <div class="col-md-6">
-        <label class="form-label">Senha</label>
-        <input type="password" name="senha" class="form-control" required>
-    </div>
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary">Login</button>
-    </div>
-</form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
